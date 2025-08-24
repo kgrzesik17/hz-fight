@@ -48,6 +48,14 @@ def fight(player, enemy):
         # print(f"Your HP: {player.hp}")
         if player.hp <= 0:
             return False
+        
+
+def switch_sides(player, enemy):
+    if random.randint(0, 1):
+        return fight(player, enemy)
+    else:
+        return not fight(enemy, player)
+    
 
 def main():
     player = Character(1000, 1000, 20, 2)
@@ -58,10 +66,10 @@ def main():
     wins = 0
 
     for i in range(simulation_count):
-        if(fight(player, enemy)):
+        if(switch_sides(player, enemy)):
             wins += 1
 
-    winrate = round((wins / simulation_count) * 100, 3)
+    winrate = round((wins / simulation_count) * 100, 2)
 
     print(f"You won {wins} of {simulation_count} fights ({winrate}% winrate.).")
 
