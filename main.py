@@ -8,8 +8,8 @@ class Character:
         self.intuition = intuition
 
 
-player = Character(10, 10, 50, 2)
-enemy = Character(10, 10, 20, 0)
+player = Character(10, 10, 50, 20)
+enemy = Character(10, 10, 20, 20)
 
 
 def hit(player, enemy):   
@@ -22,9 +22,17 @@ def hit(player, enemy):
         return 0
 
 
-def main(player, enemy):
+def fight(player, enemy):
     while player.hp > 0 and enemy.hp > 0:
-        pass
+        enemy.hp =- hit(player, enemy)
+        if enemy.hp == 0:
+            return True
+        
+        player.hp =- hit(enemy, player)
+        if player.hp == 0:
+            return False
 
+def main(player, enemy):
+    pass
 
-hit(player, enemy)
+main(player, enemy)
