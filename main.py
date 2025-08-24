@@ -50,8 +50,8 @@ def fight(player, enemy):
             return False
 
 def main():
-    player = Character(10, 10, 20, 2)
-    enemy = Character(10, 10, 20, 20)
+    player = Character(1000, 1000, 20, 2)
+    enemy = Character(1000, 1000, 20, 2)
     echo = False  # be careful with echo when simulating multiple battles
     simulation_count = 10000  # number of simulates to perform
 
@@ -61,7 +61,7 @@ def main():
         if(fight(player, enemy)):
             wins += 1
 
-    winrate = (wins / simulation_count) * 100
+    winrate = round((wins / simulation_count) * 100, 3)
 
     print(f"You won {wins} of {simulation_count} fights ({winrate}% winrate.).")
 
